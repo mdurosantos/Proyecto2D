@@ -610,8 +610,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1482230218}
   - component: {fileID: 1482230217}
-  - component: {fileID: 1482230216}
-  - component: {fileID: 1482230215}
   - component: {fileID: 1482230214}
   - component: {fileID: 1482230213}
   - component: {fileID: 1482230212}
@@ -689,31 +687,6 @@ MonoBehaviour:
   - {fileID: 137406849}
   - {fileID: 244002217}
   initialSpot: 0
---- !u!114 &1482230215
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1482230211}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 02ee46b1d99715743b98e3656ee07546, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _maxSpeed: 5
---- !u!114 &1482230216
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1482230211}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3ef1cc4e51536234badfa9646c3eebdb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!212 &1482230217
 SpriteRenderer:
   m_ObjectHideFlags: 0
