@@ -7,9 +7,9 @@ using UnityEngine.UI;
 public class Inventory : MonoBehaviour
 {
     public static Inventory instance;
-    [SerializeField] private GameObject textTemplate = null;
     [SerializeField] private List<Item> items = new List<Item>();
-    private List<Text> textChildren;
+    private GameObject itemTemplate = null;
+    private List<GameObject> displayChildren;
     private RectTransform rectTransform;
 
     private void Awake()
@@ -20,8 +20,9 @@ public class Inventory : MonoBehaviour
 
     private void Start()
     {
+        itemTemplate = transform.GetChild(0).gameObject;
         rectTransform = GetComponent<RectTransform>();
-        textChildren = new List<Text>();
+        displayChildren = new List<GameObject>();
         foreach (Item i in items) DisplayItem(i);
     }
 
@@ -43,18 +44,18 @@ public class Inventory : MonoBehaviour
 
     private void RedrawInventory()
     {
-        foreach (Text t in textChildren) Destroy(t.gameObject);
-        textChildren.Clear();
+        foreach (GameObject g in displayChildren) Destroy(g);
+        displayChildren.Clear();
         foreach (Item i in items) DisplayItem(i);
     }
 
     public void DisplayItem(Item item)
     {
-        GameObject newChild = Instantiate(textTemplate, transform);
-        newChild.transform.position += new Vector3(-rectTransform.sizeDelta.x/2 + items.IndexOf(item)*100 + newChild.GetComponent<RectTransform>().sizeDelta.x/2,0);
-        Text textChild = newChild.GetComponent<Text>();
-        textChildren.Add(textChild);
-        textChild.text = item.name;
+        GameObject newChild = Instantiate(itemTemplate, transform);
+        displayChildren.Add(newChild);
+        newChild.GetComponent<RectTransform>().position += new Vector3((items.IndexOf(item)-8)*10,0);
+        newChild.GetComponent<Text>().text = item.itemName;
+        newChild.GetComponent<SpriteRenderer>().sprite = item.itemImage;
         newChild.SetActive(true);
     }
 

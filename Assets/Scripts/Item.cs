@@ -6,5 +6,6 @@ using UnityEngine;
 public class Item : ScriptableObject
 {
     [SerializeField] public string itemName = "Unnamed Item";
-    [SerializeField] public string itemID = "NULL";
+    [SerializeField] public string itemDescription = "A useless item";
+    [SerializeField] public Sprite itemImage = null;
 }

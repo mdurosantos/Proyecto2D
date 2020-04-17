@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class EnemyVisionCollider : MonoBehaviour
 {
-    private bool playerInRange = false;
+    //private EnemyPatrol patrol;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        //patrol = GetComponent<EnemyPatrol>();
     }
 
     // Update is called once per frame
@@ -22,7 +22,7 @@ public class EnemyVisionCollider : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-            playerInRange = true;
+            //patrol.SetPlayerDetected(true);
             Debug.Log("Player in range");
         }
     }
@@ -31,7 +31,6 @@ public class EnemyVisionCollider : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-            playerInRange = false;
             Debug.Log("Player left");
         }
     }
