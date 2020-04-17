@@ -32,7 +32,7 @@ public abstract class Interactuable : MonoBehaviour
                     Interact();
                     if (rewards.Count > 0) Inventory.instance.AddItems(rewards);
                 }
-                else if (timeCost > 0) PlayerTime.instance.SubstractPoints(timeCost);
+                //else if (timeCost > 0) PlayerTime.instance.SubstractPoints(timeCost);
             }
             else Debug.Log("This one-use item has already been used.");
         }
@@ -42,7 +42,11 @@ public abstract class Interactuable : MonoBehaviour
     {
         if (requirements.Count > 0)
         {
-            foreach (Item i in requirements) if (!Inventory.instance.HasItem(i)) return false;
+            foreach (Item i in requirements) if (!Inventory.instance.HasItem(i))
+                {
+                    Debug.Log("This action requires at least one "+i.itemName);
+                    return false;
+                }
         }
         return true;
     }
