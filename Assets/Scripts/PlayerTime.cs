@@ -5,15 +5,23 @@ using UnityEngine.UI;
 
 public class PlayerTime : MonoBehaviour
 {
-    private static int time = 2;
+    public static PlayerTime instance;
+    [SerializeField] private int startingTime = 2;
     private Text pointsText;
-    // Start is called before the first frame update
-    void Start()
+    private int time;
+
+    private void Awake()
     {
-        pointsText = GetComponent<Text>();
+        if (instance != null) Destroy(gameObject);
+        else instance = this;
     }
 
-    // Update is called once per frame
+    void Start()
+    {
+        RestartScore();
+        pointsText = GetComponent<Text>();
+    }
+    
     void Update()
     {
         ShowScore();
@@ -24,23 +32,25 @@ public class PlayerTime : MonoBehaviour
         pointsText.text = time.ToString();
     }
 
-    public static int GetScore()
+    public int GetScore()
     {
         return time;
     }
 
-    public static void RestartScore()
+    public void RestartScore()
     {
-        time = 2;
+        time = startingTime;
     }
 
-    public static void AddPoints(int points)
+    public void AddPoints(int points)
     {
         time += points;
+        Debug.Log("Added " + points + " to time, now: " + time);
     }
 
-    public static void SubstractPoints(int points)
+    public void SubstractPoints(int points)
     {
         time -= points;
+        Debug.Log("Substracted " + points + " to time, now: " + time);
     }
 }
