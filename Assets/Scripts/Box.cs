@@ -7,6 +7,8 @@ public class Box : MonoBehaviour
     private bool playerInRange = false;
     [SerializeField]
     private bool hasKey;
+    [SerializeField]
+    private int timeToSubstract;
 
     // Start is called before the first frame update
     void Start()
@@ -17,7 +19,7 @@ public class Box : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKey(KeyCode.Space) && playerInRange)
+        if (Input.GetButtonDown("Interact") && playerInRange) //Interact está definido como la barra espaciadora
         {  
             if (hasKey)
             {
@@ -27,6 +29,8 @@ public class Box : MonoBehaviour
             {
                 Debug.Log("Wasted movement");
             }
+
+            PlayerTime.SubstractPoints(timeToSubstract);
         }
     }
 
