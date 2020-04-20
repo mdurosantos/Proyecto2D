@@ -52,7 +52,7 @@ public class EnemyPatrol : MonoBehaviour
         }
         else
         {
-            Debug.Log('H');
+            //Debug.Log('H');
             Patrol();
         }
 

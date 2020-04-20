@@ -6,10 +6,10 @@ using UnityEngine;
 public abstract class Interactuable : MonoBehaviour
 {
 
-    [SerializeField] private bool oneUse = false;
+    [SerializeField] private bool oneUse = true;
     [SerializeField] private List<Item> requirements = new List<Item>();
     [SerializeField] private List<Item> rewards = new List<Item>();
-    [SerializeField] private int timeCost = 0;
+    //[SerializeField] private int timeCost = 0;
     private bool playerInRange;
     private bool used;
 

@@ -7,5 +7,6 @@ public class Box : Interactuable
     public override void Interact()
     {
         //maybe trigger open animation, or anything
+        gameObject.SetActive(false);//temp
     }
 }

@@ -36,7 +36,7 @@ public class EnemyPatrolVisionCollider : MonoBehaviour
         if (collision.CompareTag("Player") && visibility.getPlayerVisible())
         {
             patrol.SetPlayerDetected(true);
-            Debug.Log("Player in range");
+            //Debug.Log("Player in range");
         }
     }
 
