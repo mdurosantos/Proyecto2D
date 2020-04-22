@@ -26,8 +26,7 @@ public class EnemyPatrolVisionCollider : MonoBehaviour
     {
         if (collision.CompareTag("Player") && visibility.getPlayerVisible())
         {
-            patrol.SetPlayerDetected(true);
-            Debug.Log("Player in range");
+            CheckForPlayer();
         }
     }
 
@@ -35,8 +34,21 @@ public class EnemyPatrolVisionCollider : MonoBehaviour
     {
         if (collision.CompareTag("Player") && visibility.getPlayerVisible())
         {
+            CheckForPlayer();
+        }
+    }
+
+
+    private void CheckForPlayer()
+    {
+        Vector2 direction = player.transform.position - transform.position;
+        RaycastHit2D[] hits = new RaycastHit2D[3];
+        Physics2D.Raycast(transform.position, direction, new ContactFilter2D(), hits);
+        //Debug.DrawRay(transform.position, direction, Color.red);
+        if (hits[0].collider.gameObject.transform.Equals(player.transform))
+        {
             patrol.SetPlayerDetected(true);
-            //Debug.Log("Player in range");
+            Debug.Log("Player in range");
         }
     }
 

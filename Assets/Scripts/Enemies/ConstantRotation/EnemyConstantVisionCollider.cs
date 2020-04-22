@@ -26,14 +26,25 @@ public class EnemyConstantVisionCollider : MonoBehaviour
     {
         if (collision.CompareTag("Player") && visibility.getPlayerVisible())
         {
-            enemy.SetPlayerDetected(true);
-            Debug.Log("Player in range");
+            CheckForPlayer();
         }
     }
 
     private void OnTriggerStay2D(Collider2D collision)
     {
         if (collision.CompareTag("Player") && visibility.getPlayerVisible())
+        {
+            CheckForPlayer();
+        }
+    }
+
+    private void CheckForPlayer()
+    {
+        Vector2 direction = player.transform.position - transform.position;
+        RaycastHit2D[] hits = new RaycastHit2D[3];
+        Physics2D.Raycast(transform.position, direction, new ContactFilter2D(), hits);
+        //Debug.DrawRay(transform.position, direction, Color.red);
+        if (hits[0].collider.gameObject.transform.Equals(player.transform))
         {
             enemy.SetPlayerDetected(true);
             Debug.Log("Player in range");
