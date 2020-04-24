@@ -6945,7 +6945,7 @@ PrefabInstance:
     - target: {fileID: 6646929982313546307, guid: 896762b926d49304c96f07f8f62937fd,
         type: 3}
       propertyPath: initialSpot
-      value: 5
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 6646929982313546308, guid: 896762b926d49304c96f07f8f62937fd,
         type: 3}
@@ -11116,10 +11116,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 921ce2be63662ca45a83be4081fc3f0d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  items:
-  - {fileID: 11400000, guid: 0b410bb01b7c6504f9b184f156ecc106, type: 2}
-  - {fileID: 11400000, guid: 03acc18463b9fab49a9e248d15f47db2, type: 2}
-  - {fileID: 11400000, guid: 6841c578ae02d76428aa84d5c96b78b6, type: 2}
+  items: []
 --- !u!114 &1884721195
 MonoBehaviour:
   m_ObjectHideFlags: 0
