@@ -5,7 +5,6 @@ using UnityEngine;
 [RequireComponent(typeof(Collider2D))]
 public abstract class Interactuable : MonoBehaviour
 {
-
     [SerializeField] private bool oneUse = true;
     [SerializeField] private List<Item> requirements = new List<Item>();
     [SerializeField] private List<Item> rewards = new List<Item>();

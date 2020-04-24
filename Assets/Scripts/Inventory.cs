@@ -53,7 +53,7 @@ public class Inventory : MonoBehaviour
     {
         GameObject newChild = Instantiate(itemTemplate, transform);
         displayChildren.Add(newChild);
-        newChild.GetComponent<RectTransform>().position += new Vector3((items.IndexOf(item)-8)/10f,0);
+        newChild.GetComponent<RectTransform>().position += new Vector3((items.IndexOf(item)-8)/8f+0.05f,0);
         newChild.GetComponent<Text>().text = item.itemName;
         newChild.GetComponent<SpriteRenderer>().sprite = item.itemImage;
         newChild.SetActive(true);

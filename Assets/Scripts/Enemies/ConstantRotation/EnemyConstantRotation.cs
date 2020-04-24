@@ -5,21 +5,18 @@ using UnityEngine;
 
 public class EnemyConstantRotation : MonoBehaviour
 {
-    [SerializeField]
-    private float startWaitTime;
+    [SerializeField] private float startWaitTime;
     private float waitTime;
-    [SerializeField]
-    private float[] directionAngles;
+    [SerializeField] private float[] directionAngles;
     private int nextSpot;
-    [SerializeField]
-    private float speed;
-    [SerializeField]
-    private Transform playerLocation;
+    [SerializeField] private float speed;
+    [SerializeField] private Transform playerLocation;
     private PlayerVisibility playerVisibility;
     private AIDestinationSetter destination;
     private bool playerDetected = false;
-    [SerializeField]
-    private Transform enemySpot;
+    [SerializeField] private Transform enemySpot;
+    [SerializeField] private bool randomRotation = false;
+    private float randomAngle;
 
     // Start is called before the first frame update
     void Start()
@@ -28,6 +25,7 @@ public class EnemyConstantRotation : MonoBehaviour
         playerVisibility = playerLocation.GetComponent<PlayerVisibility>();
         nextSpot = 0;
         waitTime = startWaitTime;
+        NewRandomAngle();
 
     }
 
@@ -52,21 +50,26 @@ public class EnemyConstantRotation : MonoBehaviour
 
     void Patrol()
     {
-        transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.Euler(0, 0, directionAngles[nextSpot]), speed * Time.deltaTime);
+        if(!randomRotation) transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.Euler(0, 0, directionAngles[nextSpot]), speed * Time.deltaTime);
+        else transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.Euler(0, 0, randomAngle), speed * Time.deltaTime);
         if (transform.rotation.z - directionAngles[nextSpot] < 0.2f)
         {
             if (waitTime <= 0)
             {
-                if (nextSpot < directionAngles.Length - 1)
+                if (!randomRotation)
                 {
-                    nextSpot++;
-                    Debug.Log("Sumado");
+                    if (nextSpot < directionAngles.Length - 1)
+                    {
+                        nextSpot++;
+                        Debug.Log("Sumado");
+                    }
+                    else
+                    {
+                        nextSpot = 0;
+                        Debug.Log("Reseteado");
+                    }
                 }
-                else
-                {
-                    nextSpot = 0;
-                    Debug.Log("Reseteado");
-                }
+                else NewRandomAngle();
                 waitTime = startWaitTime;
             }
             else
@@ -79,6 +82,11 @@ public class EnemyConstantRotation : MonoBehaviour
     public void SetPlayerDetected(bool detected)
     {
         playerDetected = detected;
+    }
+
+    private void NewRandomAngle()
+    {
+        randomAngle = Random.Range(0f, 359f);
     }
 
 

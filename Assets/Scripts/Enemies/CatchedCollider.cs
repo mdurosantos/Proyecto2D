@@ -9,7 +9,7 @@ public class CatchedCollider : MonoBehaviour
     {
         if (collider.tag == "Player")
         {
-            SceneManager.LoadScene("ProtoLevel1");
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
     }
 }
