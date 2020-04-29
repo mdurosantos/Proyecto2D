@@ -33,7 +33,7 @@ public class StatueHaunt : Hauntable
     {
         horizontal = Input.GetAxis("Horizontal");
         vertical = Input.GetAxis("Vertical");
-        if (new Vector2(horizontal, vertical).magnitude != 0)
+        if (new Vector2(horizontal, vertical).magnitude >0.5f)
         {
             if (Mathf.Abs(horizontal) > Mathf.Abs(vertical))
             {

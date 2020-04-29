@@ -8,7 +8,6 @@ public abstract class Interactuable : MonoBehaviour
     [SerializeField] private bool oneUse = true;
     [SerializeField] private List<Item> requirements = new List<Item>();
     [SerializeField] private List<Item> rewards = new List<Item>();
-    //[SerializeField] private int timeCost = 0;
     private bool playerInRange;
     private bool used;
 
@@ -31,7 +30,6 @@ public abstract class Interactuable : MonoBehaviour
                     Interact();
                     if (rewards.Count > 0) Inventory.instance.AddItems(rewards);
                 }
-                //else if (timeCost > 0) PlayerTime.instance.SubstractPoints(timeCost);
             }
             else Debug.Log("This one-use item has already been used.");
         }
