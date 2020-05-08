@@ -14,16 +14,14 @@ public class CameraController : MonoBehaviour
     public Vector2 DeadZone;
 
     private Camera _camera;
-
-    // Use this for initialization
+    
     void Start()
     {
         _offset = transform.position - Player.position;
         _camera = GetComponent<Camera>();
     }
 
-
-    // Update is called once per frame
+    
     void LateUpdate()
     { 
         //if (OutOfDeadZone())
