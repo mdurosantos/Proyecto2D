@@ -67,8 +67,8 @@ public class EnemyPatrol : MonoBehaviour
                     randomSpot = Random.Range(0, directionAngles.Length);
                     break;
                 default:
-                    destination.target = moveSpots[randomSpot];
                     randomSpot = Random.Range(0, moveSpots.Length);
+                    destination.target = moveSpots[randomSpot];          
                     break;
             }
 
@@ -82,10 +82,12 @@ public class EnemyPatrol : MonoBehaviour
             switch (enemyType)
             {
                 case EnemyType.ConstantRotation:
-                    ConstantRotation();
+                    if(Vector2.Distance(transform.position, enemySpot.position) < 0.2f)
+                        ConstantRotation();
                     break;
                 case EnemyType.RandomRotation:
-                    RandomRotation();
+                    if(Vector2.Distance(transform.position, enemySpot.position) < 0.2f)
+                        RandomRotation();
                     break;
                 default:
                     Patrol();

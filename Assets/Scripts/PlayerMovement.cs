@@ -39,7 +39,7 @@ public class PlayerMovement : MonoBehaviour
         {
             if (stepCounter >= 1f/stepFrequency)
             {
-                SoundManager.PlayRandomAudio(walkingSoundEffects, transform.position);
+                //SoundManager.PlayRandomAudio(walkingSoundEffects, transform.position);
                 stepCounter = 0f;
             }
             else stepCounter += Time.deltaTime * (0.5f + Mathf.Abs(_input.Horizontal) / 2f + Mathf.Abs(_input.Vertical) / 2f);
