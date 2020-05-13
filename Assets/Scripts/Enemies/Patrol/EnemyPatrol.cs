@@ -32,7 +32,8 @@ public class EnemyPatrol : MonoBehaviour
         destination = GetComponent<AIDestinationSetter>();
         playerVisibility = playerLocation.GetComponent<PlayerVisibility>();
         waitTime = startWaitTime;
-        destination.target = moveSpots[initialSpot];
+        if(moveSpots.Length>0)
+            destination.target = moveSpots[initialSpot];
         nextSpot = 0;
         if (enemyType == EnemyType.Patrol)
         {
