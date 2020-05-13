@@ -5,8 +5,7 @@ using UnityEngine;
 public class EnemyRandomVisionCollider : MonoBehaviour
 {
     private EnemyRandomRotation enemy;
-    [SerializeField]
-    private Transform player;
+    [SerializeField] private Transform player = null;
     private PlayerVisibility visibility;
 
     // Start is called before the first frame update

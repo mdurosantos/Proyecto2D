@@ -5,8 +5,7 @@ using UnityEngine;
 public class EnemyConstantVisionCollider : MonoBehaviour
 {
     private EnemyConstantRotation enemy;
-    [SerializeField]
-    private Transform player;
+    [SerializeField] private Transform player = null;
     private PlayerVisibility visibility;
 
     // Start is called before the first frame update

@@ -5,8 +5,7 @@ using UnityEngine;
 public class EnemyPatrolVisionCollider : MonoBehaviour
 {
     private EnemyPatrol patrol;
-    [SerializeField]
-    private Transform player;
+    [SerializeField] private Transform player = null;
     private PlayerVisibility visibility;
 
     // Start is called before the first frame update

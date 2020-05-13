@@ -5,19 +5,15 @@ using UnityEngine;
 
 public class EnemyRandomRotation : MonoBehaviour
 {
-    [SerializeField]
-    private float startWaitTime;
+    [SerializeField] private float startWaitTime = 1f;
     private float waitTime;
-    [SerializeField]
-    private float[] directionAngles;
+    [SerializeField] private float[] directionAngles = null;
     private bool playerDetected = false;
-    [SerializeField]
-    private Transform playerLocation;
+    [SerializeField] private Transform playerLocation = null;
     private PlayerVisibility playerVisibility;
     private int randomSpot;
     private AIDestinationSetter destination;
-    [SerializeField]
-    private Transform enemySpot;
+    [SerializeField] private Transform enemySpot = null;
 
     // Start is called before the first frame update
     void Start()
