@@ -2,30 +2,31 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyPatrolVisionCollider : MonoBehaviour
+public class EnemyRandomVisionCollider : MonoBehaviour
 {
-    private EnemyPatrol patrol;
+    private EnemyRandomRotation enemy;
     [SerializeField] private Transform player = null;
     private PlayerVisibility visibility;
 
     // Start is called before the first frame update
     void Start()
     {
-        patrol = GetComponent<EnemyPatrol>();
+        enemy = GetComponent<EnemyRandomRotation>();
         visibility = player.GetComponent<PlayerVisibility>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Player") && visibility.getPlayerVisible())
         {
-            CheckForPlayer();
+            enemy.SetPlayerDetected(true);
+            Debug.Log("Player in range");
         }
     }
 
@@ -33,20 +34,7 @@ public class EnemyPatrolVisionCollider : MonoBehaviour
     {
         if (collision.CompareTag("Player") && visibility.getPlayerVisible())
         {
-            CheckForPlayer();
-        }
-    }
-
-
-    private void CheckForPlayer()
-    {
-        Vector2 direction = player.transform.position - transform.position;
-        RaycastHit2D[] hits = new RaycastHit2D[3];
-        Physics2D.Raycast(transform.position, direction, new ContactFilter2D(), hits);
-        //Debug.DrawRay(transform.position, direction, Color.red);
-        if (hits[0].collider.gameObject.transform.Equals(player.transform))
-        {
-            patrol.SetPlayerDetected(true);
+            enemy.SetPlayerDetected(true);
             Debug.Log("Player in range");
         }
     }

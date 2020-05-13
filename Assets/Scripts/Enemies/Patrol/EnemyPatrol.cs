@@ -6,28 +6,23 @@ using UnityEngine;
 public class EnemyPatrol : MonoBehaviour
 {
 
-    [SerializeField]
-    private EnemyType enemyType; //Sirve para elegir el comportamiento del enemigo
+    [SerializeField] private EnemyType enemyType = EnemyType.ConstantRotation; //Sirve para elegir el comportamiento del enemigo
     public float startWaitTime; //Es el tiempo que transcurre entre movimiento y movimiento o rotación y rotación
     private float waitTime; //Tiempo de espera transcurrido
     public Transform[] moveSpots; //Waypoints a los que se moverá el enemigo durante Patrol
-    [SerializeField]
-    private int initialSpot; //Index del primer Waypoint al que se moverá el enemigo
+    [SerializeField] private int initialSpot = 0; //Index del primer Waypoint al que se moverá el enemigo
     private int randomSpot; //Index aleatorio del Waypoint o de la Rotación
     private bool playerDetected = false; //El enemigo ha detectado al ugador
-    [SerializeField]
-    private float[] directionAngles; //Ángulos a los que rotará el enemigo durante RandomRotation
-    [SerializeField]
-    private Transform playerLocation; //Localización del jugador
-    [SerializeField]
-    private Transform enemySpot; //Waypoint al que "pertenece" el enemigo.
+    [SerializeField] private float[] directionAngles = null; //Ángulos a los que rotará el enemigo durante RandomRotation
+    [SerializeField] private Transform playerLocation = null; //Localización del jugador
+    [SerializeField] private Transform enemySpot = null; //Waypoint al que "pertenece" el enemigo.
     private PlayerVisibility playerVisibility; 
     private AIPath path;
     private AIDestinationSetter destination;
     //[SerializeField] private bool randomRotation = false;
     private float randomAngle;
     private int nextSpot;
-    [SerializeField] private float speed;
+    [SerializeField] private float speed = 3f;
 
 
     // Start is called before the first frame update

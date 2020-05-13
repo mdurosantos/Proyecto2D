@@ -2,23 +2,23 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyPatrolVisionCollider : MonoBehaviour
+public class EnemyConstantVisionCollider : MonoBehaviour
 {
-    private EnemyPatrol patrol;
+    private EnemyConstantRotation enemy;
     [SerializeField] private Transform player = null;
     private PlayerVisibility visibility;
 
     // Start is called before the first frame update
     void Start()
     {
-        patrol = GetComponent<EnemyPatrol>();
+        enemy = GetComponent<EnemyConstantRotation>();
         visibility = player.GetComponent<PlayerVisibility>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -37,7 +37,6 @@ public class EnemyPatrolVisionCollider : MonoBehaviour
         }
     }
 
-
     private void CheckForPlayer()
     {
         Vector2 direction = player.transform.position - transform.position;
@@ -46,7 +45,7 @@ public class EnemyPatrolVisionCollider : MonoBehaviour
         //Debug.DrawRay(transform.position, direction, Color.red);
         if (hits[0].collider.gameObject.transform.Equals(player.transform))
         {
-            patrol.SetPlayerDetected(true);
+            enemy.SetPlayerDetected(true);
             Debug.Log("Player in range");
         }
     }
