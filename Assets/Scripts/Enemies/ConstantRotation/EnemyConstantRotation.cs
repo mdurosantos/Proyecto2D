@@ -5,16 +5,16 @@ using UnityEngine;
 
 public class EnemyConstantRotation : MonoBehaviour
 {
-    [SerializeField] private float startWaitTime;
+    [SerializeField] private float startWaitTime = 1f;
     private float waitTime;
-    [SerializeField] private float[] directionAngles;
+    [SerializeField] private float[] directionAngles = null;
     private int nextSpot;
-    [SerializeField] private float speed;
-    [SerializeField] private Transform playerLocation;
+    [SerializeField] private float speed = 3f;
+    [SerializeField] private Transform playerLocation = null;
     private PlayerVisibility playerVisibility;
     private AIDestinationSetter destination;
     private bool playerDetected = false;
-    [SerializeField] private Transform enemySpot;
+    [SerializeField] private Transform enemySpot = null;
     [SerializeField] private bool randomRotation = false;
     private float randomAngle;
 
