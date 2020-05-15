@@ -55,7 +55,7 @@ public abstract class Hauntable : MonoBehaviour
     }
     private void SwitchDimension()
     {
-        for (int i = 0; i < transform.childCount; i++) transform.GetChild(i).gameObject.SetActive(!transform.GetChild(i).gameObject.activeSelf);
+        for (int i = 0; i < 2; i++) transform.GetChild(i).gameObject.SetActive(!transform.GetChild(i).gameObject.activeSelf);
     }
 
     public abstract void Interact();
