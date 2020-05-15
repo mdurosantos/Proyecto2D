@@ -18,6 +18,6 @@ public class StartSceneController : MonoBehaviour
 
     private bool SpacePressed()
     {
-        return Input.GetKeyDown(KeyCode.Space);
+        return Input.GetButtonDown("Interact");
     }
 }
