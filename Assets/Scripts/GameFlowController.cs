@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class GameFlowController : MonoBehaviour
 {
     public static GameFlowController Instance;
+    private static bool paused = false;
 
     private void Awake()
     {
@@ -16,22 +17,26 @@ public class GameFlowController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (PausedPressed())
+        if (!paused && PausedPressed())
+        {
+            paused = true;
             PauseGame();
+        }
         else if (PauseUnpressed())
         {
+            paused = false;
             UnPauseGame();
         }
     }
 
     private static bool PauseUnpressed()
     {
-        return Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Escape);
+        return Input.GetButtonDown("Interact") || Input.GetButtonDown("Cancel");
     }
 
     private bool PausedPressed()
     {
-        return Input.GetKeyDown(KeyCode.Escape);
+        return Input.GetButtonDown("Cancel");
     }
 
     public void PauseGame()
