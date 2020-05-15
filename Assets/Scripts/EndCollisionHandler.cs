@@ -10,7 +10,7 @@ public class EndCollisionHandler : MonoBehaviour
     {
         if (collider.tag == "Player")
         {
-            SceneController.LoadNextScene(nextScene);
+            SceneController.LoadNextScene();
 
         }
     }

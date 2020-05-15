@@ -3,31 +3,29 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class SceneController : MonoBehaviour
+public static class SceneController
 {
-    public static SceneController Instance;
-    // Start is called before the first frame update
-    private void Awake()
-    {
-        Instance = this;
-    }
-
-    void Start()
-    {
-        
-    }
-
     public static void LoadCurrentScene()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
     
-    public static void LoadNextScene(string scene)
+    public static void LoadNextScene()
     {
-        SceneManager.LoadScene(scene);
+        SceneManager.LoadScene(GetCurrentSceneIndex() + 1);
     }
 
-    public static void LoadPreviousScene(string scene)
+    public static void LoadPreviousScene()
+    {
+        SceneManager.LoadScene(GetCurrentSceneIndex() - 1);
+    }
+
+    private static int GetCurrentSceneIndex()
+    {
+        return SceneManager.GetActiveScene().buildIndex;
+    }
+
+    public static void LoadScene(string scene)
     {
         SceneManager.LoadScene(scene);
     }

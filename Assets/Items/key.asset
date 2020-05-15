@@ -13,5 +13,4 @@ MonoBehaviour:
   m_Name: key
   m_EditorClassIdentifier: 
   itemName: Key
-  itemDescription: an old golden key
-  itemImage: {fileID: 21300000, guid: 59cf28cb24735824d8b9e2ba781550df, type: 3}
+  itemImage: {fileID: 21300000, guid: 7399d768f80535f4ba54c64014dfe529, type: 3}
