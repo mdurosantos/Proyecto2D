@@ -15,11 +15,17 @@ public class PlayerMovement : MonoBehaviour
 
     private PlayerInput _input;
 
+    private Animator anim;
+
+    private Rigidbody2D rb;
+
     void Start()
     {
         _input = GetComponent<PlayerInput>();
         canMove = true;
         stepCounter = 0f;
+        anim = GetComponentInChildren<Animator>();
+        rb = GetComponent<Rigidbody2D>();
     }
     
     void Update()
@@ -45,6 +51,91 @@ public class PlayerMovement : MonoBehaviour
             else stepCounter += Time.deltaTime * (0.5f + Mathf.Abs(_input.Horizontal) / 2f + Mathf.Abs(_input.Vertical) / 2f);
         }
 
+        anim.SetFloat("direction_x", _input.Horizontal);
+        anim.SetFloat("direction_y", _input.Vertical);
+       
+        if(_input.Vertical == 0 && _input.Horizontal == 0)
+        {
+            anim.SetBool("walk_north", false);
+            anim.SetBool("walk_south", false);
+            anim.SetBool("walk_side", false);
+            anim.SetBool("stop", true);
+        }
+
+        if(_input.Vertical < 0.1 && Mathf.Abs(_input.Horizontal) < Mathf.Abs(_input.Vertical))
+        {
+            anim.SetBool("walk_north", false);
+            anim.SetBool("walk_south", true);
+            anim.SetBool("walk_side", false);
+            anim.SetBool("stop", false);
+        }
+
+        if (_input.Vertical > 0.1 && Mathf.Abs(_input.Horizontal) < Mathf.Abs(_input.Vertical))
+        {
+            anim.SetBool("walk_north", true);
+            anim.SetBool("walk_south", false);
+            anim.SetBool("walk_side", false);
+            anim.SetBool("stop", false);
+        }
+
+        if (_input.Horizontal < 0.1 && Mathf.Abs(_input.Vertical) < Mathf.Abs(_input.Horizontal))
+        {
+            anim.SetBool("walk_north", false);
+            anim.SetBool("walk_south", false);
+            anim.SetBool("walk_side", true);
+            anim.SetBool("stop", false);
+        }
+
+        if (_input.Horizontal > 0.1 && Mathf.Abs(_input.Vertical) < Mathf.Abs(_input.Horizontal))
+        {
+            anim.SetBool("walk_north", false);
+            anim.SetBool("walk_south", false);
+            anim.SetBool("walk_side", true);
+            anim.SetBool("stop", false);
+        }
+        
+        /////////////////////////////////////////
+    /*
+        if (rb.velocity.x == 0 && rb.velocity.y == 0)
+        {
+            anim.SetBool("walk_north", false);
+            anim.SetBool("walk_south", false);
+            anim.SetBool("walk_side", false);
+            anim.SetBool("stop", true);
+        }
+
+        if (rb.velocity.y < 0.1 && Mathf.Abs(rb.velocity.x) < Mathf.Abs(rb.velocity.y))
+        {
+            anim.SetBool("walk_north", false);
+            anim.SetBool("walk_south", true);
+            anim.SetBool("walk_side", false);
+            anim.SetBool("stop", false);
+        }
+
+        if (rb.velocity.y > 0.1 && Mathf.Abs(rb.velocity.x) < Mathf.Abs(rb.velocity.y))
+        {
+            anim.SetBool("walk_north", true);
+            anim.SetBool("walk_south", false);
+            anim.SetBool("walk_side", false);
+            anim.SetBool("stop", false);
+        }
+
+        if (rb.velocity.x < 0.1 && Mathf.Abs(rb.velocity.y) < Mathf.Abs(rb.velocity.x))
+        {
+            anim.SetBool("walk_north", false);
+            anim.SetBool("walk_south", false);
+            anim.SetBool("walk_side", true);
+            anim.SetBool("stop", false);
+        }
+
+        if (rb.velocity.x > 0.1 && Mathf.Abs(rb.velocity.y) < Mathf.Abs(rb.velocity.x))
+        {
+            anim.SetBool("walk_north", false);
+            anim.SetBool("walk_south", false);
+            anim.SetBool("walk_side", true);
+            anim.SetBool("stop", false);
+        }
+        */
         transform.Translate(_currentSpeed);
     }
 
