@@ -11,13 +11,13 @@ public class StartSceneController : MonoBehaviour
 
     void Update()
     {
-        if (SpacePressed()) {
-            SceneController.LoadNextScene(firstLevel);
+        if (Input.GetButton("Interact")) {
+            SceneController.LoadNextScene();
         }
     }
 
     private bool SpacePressed()
     {
-        return Input.GetButtonDown("Interact");
+        return Input.GetButton("Interact");
     }
 }
