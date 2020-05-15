@@ -12,6 +12,7 @@ public abstract class Hauntable : MonoBehaviour
     private Collider2D playerCollision;
     private bool playerInRange;
     private bool haunted;
+    [SerializeField] [Range(0.2f, 2f)] private float offsetScale = 1f;
 
     void Start()
     {
@@ -32,7 +33,7 @@ public abstract class Hauntable : MonoBehaviour
                 haunted = true;
                 playerVisibility.setPlayerVisible(false);
                 playerMovement.setCanMove(false);
-                camControl.Player = transform;
+                camControl.ChangeTarget(transform, offsetScale);
                 playerCollision.enabled = false;
                 player.GetComponent<SpriteRenderer>().color = new Color(0, 0, 0, 0); //TEMP to make player "invisible"
                 SwitchDimension();
@@ -45,7 +46,7 @@ public abstract class Hauntable : MonoBehaviour
                 haunted = false;
                 playerVisibility.setPlayerVisible(true);
                 playerMovement.setCanMove(true);
-                camControl.Player = player.transform;
+                camControl.ChangeTarget(player.transform, 1f);
                 playerCollision.enabled = true;
                 player.GetComponent<SpriteRenderer>().color = Color.white; //TEMP to make player visible again
                 SwitchDimension();
