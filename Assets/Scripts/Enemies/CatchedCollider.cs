@@ -16,7 +16,7 @@ public class CatchedCollider : MonoBehaviour
     {
         if (collider.tag == "Player" && visibility.getPlayerVisible())
         {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            SceneController.LoadCurrentScene();
         }
     }
 }
