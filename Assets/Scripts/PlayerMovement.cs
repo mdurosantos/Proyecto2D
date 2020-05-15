@@ -19,6 +19,8 @@ public class PlayerMovement : MonoBehaviour
 
     private Rigidbody2D rb;
 
+    private float moveThreshold;
+
     void Start()
     {
         _input = GetComponent<PlayerInput>();
@@ -26,6 +28,7 @@ public class PlayerMovement : MonoBehaviour
         stepCounter = 0f;
         anim = GetComponentInChildren<Animator>();
         rb = GetComponent<Rigidbody2D>();
+        moveThreshold = 0.1f * _maxSpeed * Time.deltaTime;
     }
     
     void Update()
@@ -38,8 +41,11 @@ public class PlayerMovement : MonoBehaviour
         float target_x = _input.Horizontal * _maxSpeed * Time.deltaTime;
         float target_y = _input.Vertical * _maxSpeed * Time.deltaTime;
 
-        _currentSpeed.x = Mathf.Lerp(_currentSpeed.x, target_x, 0.5f);
-        _currentSpeed.y = Mathf.Lerp(_currentSpeed.y, target_y, 0.5f);
+        //_currentSpeed.x = Mathf.Lerp(_currentSpeed.x, target_x, 0.5f);
+        //_currentSpeed.y = Mathf.Lerp(_currentSpeed.y, target_y, 0.5f);
+
+        _currentSpeed.x = target_x;
+        _currentSpeed.y = target_y;
 
         if (_input.Horizontal != 0 || _input.Vertical != 0)
         {
@@ -51,91 +57,26 @@ public class PlayerMovement : MonoBehaviour
             else stepCounter += Time.deltaTime * (0.5f + Mathf.Abs(_input.Horizontal) / 2f + Mathf.Abs(_input.Vertical) / 2f);
         }
 
-        anim.SetFloat("direction_x", _input.Horizontal);
-        anim.SetFloat("direction_y", _input.Vertical);
-       
-        if(_input.Vertical == 0 && _input.Horizontal == 0)
+        if (_currentSpeed.magnitude <= moveThreshold)
         {
-            anim.SetBool("walk_north", false);
-            anim.SetBool("walk_south", false);
-            anim.SetBool("walk_side", false);
             anim.SetBool("stop", true);
+            anim.SetInteger("direction", -1);
         }
-
-        if(_input.Vertical < 0.1 && Mathf.Abs(_input.Horizontal) < Mathf.Abs(_input.Vertical))
+        else
         {
-            anim.SetBool("walk_north", false);
-            anim.SetBool("walk_south", true);
-            anim.SetBool("walk_side", false);
             anim.SetBool("stop", false);
-        }
-
-        if (_input.Vertical > 0.1 && Mathf.Abs(_input.Horizontal) < Mathf.Abs(_input.Vertical))
-        {
-            anim.SetBool("walk_north", true);
-            anim.SetBool("walk_south", false);
-            anim.SetBool("walk_side", false);
-            anim.SetBool("stop", false);
-        }
-
-        if (_input.Horizontal < 0.1 && Mathf.Abs(_input.Vertical) < Mathf.Abs(_input.Horizontal))
-        {
-            anim.SetBool("walk_north", false);
-            anim.SetBool("walk_south", false);
-            anim.SetBool("walk_side", true);
-            anim.SetBool("stop", false);
-        }
-
-        if (_input.Horizontal > 0.1 && Mathf.Abs(_input.Vertical) < Mathf.Abs(_input.Horizontal))
-        {
-            anim.SetBool("walk_north", false);
-            anim.SetBool("walk_south", false);
-            anim.SetBool("walk_side", true);
-            anim.SetBool("stop", false);
+            if (Mathf.Abs(_currentSpeed.x) < Mathf.Abs(_currentSpeed.y))
+            {
+                if (_currentSpeed.y < moveThreshold) anim.SetInteger("direction", 0);
+                else anim.SetInteger("direction", 2);
+            }
+            else
+            {
+                if (_currentSpeed.x < moveThreshold) anim.SetInteger("direction", 1);
+                else anim.SetInteger("direction", 3);
+            }
         }
         
-        /////////////////////////////////////////
-    /*
-        if (rb.velocity.x == 0 && rb.velocity.y == 0)
-        {
-            anim.SetBool("walk_north", false);
-            anim.SetBool("walk_south", false);
-            anim.SetBool("walk_side", false);
-            anim.SetBool("stop", true);
-        }
-
-        if (rb.velocity.y < 0.1 && Mathf.Abs(rb.velocity.x) < Mathf.Abs(rb.velocity.y))
-        {
-            anim.SetBool("walk_north", false);
-            anim.SetBool("walk_south", true);
-            anim.SetBool("walk_side", false);
-            anim.SetBool("stop", false);
-        }
-
-        if (rb.velocity.y > 0.1 && Mathf.Abs(rb.velocity.x) < Mathf.Abs(rb.velocity.y))
-        {
-            anim.SetBool("walk_north", true);
-            anim.SetBool("walk_south", false);
-            anim.SetBool("walk_side", false);
-            anim.SetBool("stop", false);
-        }
-
-        if (rb.velocity.x < 0.1 && Mathf.Abs(rb.velocity.y) < Mathf.Abs(rb.velocity.x))
-        {
-            anim.SetBool("walk_north", false);
-            anim.SetBool("walk_south", false);
-            anim.SetBool("walk_side", true);
-            anim.SetBool("stop", false);
-        }
-
-        if (rb.velocity.x > 0.1 && Mathf.Abs(rb.velocity.y) < Mathf.Abs(rb.velocity.x))
-        {
-            anim.SetBool("walk_north", false);
-            anim.SetBool("walk_south", false);
-            anim.SetBool("walk_side", true);
-            anim.SetBool("stop", false);
-        }
-        */
         transform.Translate(_currentSpeed);
     }
 
