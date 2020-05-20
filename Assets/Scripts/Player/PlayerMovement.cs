@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(PlayerInput))]
+[RequireComponent(typeof(PlayerInput), typeof(PlayerAnimations))]
 public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] private float _maxSpeed = 3f;
@@ -14,8 +14,7 @@ public class PlayerMovement : MonoBehaviour
     private float stepCounter;
 
     private PlayerInput _input;
-
-    private Animator anim;
+    private PlayerAnimations animations;
 
     private Rigidbody2D rb;
 
@@ -24,9 +23,9 @@ public class PlayerMovement : MonoBehaviour
     void Start()
     {
         _input = GetComponent<PlayerInput>();
+        animations = GetComponentInChildren<PlayerAnimations>();
         canMove = true;
         stepCounter = 0f;
-        anim = GetComponentInChildren<Animator>();
         rb = GetComponent<Rigidbody2D>();
         moveThreshold = 0.1f * _maxSpeed * Time.deltaTime;
     }
@@ -49,35 +48,17 @@ public class PlayerMovement : MonoBehaviour
 
         if (_input.Horizontal != 0 || _input.Vertical != 0)
         {
-            if (stepCounter >= 1f/stepFrequency)
+            animations.Walk(new Vector2(_input.Horizontal, _input.Vertical));
+            if (stepCounter >= 1f / stepFrequency)
             {
                 //SoundManager.PlayRandomAudio(walkingSoundEffects, transform.position);
                 stepCounter = 0f;
             }
             else stepCounter += Time.deltaTime * (0.5f + Mathf.Abs(_input.Horizontal) / 2f + Mathf.Abs(_input.Vertical) / 2f);
         }
-
-        if (_currentSpeed.magnitude <= moveThreshold)
-        {
-            anim.SetBool("stop", true);
-            anim.SetInteger("direction", -1);
-        }
-        else
-        {
-            anim.SetBool("stop", false);
-            if (Mathf.Abs(_currentSpeed.x) < Mathf.Abs(_currentSpeed.y))
-            {
-                if (_currentSpeed.y < moveThreshold) anim.SetInteger("direction", 0);
-                else anim.SetInteger("direction", 2);
-            }
-            else
-            {
-                if (_currentSpeed.x < moveThreshold) anim.SetInteger("direction", 1);
-                else anim.SetInteger("direction", 3);
-            }
-        }
+        else animations.Idle();
         
-        transform.Translate(_currentSpeed);
+        transform.Translate(_currentSpeed, Space.World);
     }
 
     public void setCanMove(bool can) { canMove = can; }
