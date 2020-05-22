@@ -22,7 +22,7 @@ public class PlayerAnimations : MonoBehaviour
 
     private void Update()
     {
-        if (!stopped) if (anim.GetInteger("direction") != direction) anim.SetInteger("direction", direction);
+        if (!stopped) anim.SetInteger("direction", direction);
     }
 
     public void Walk(Vector2 input)
