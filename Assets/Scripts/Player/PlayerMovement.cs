@@ -40,11 +40,8 @@ public class PlayerMovement : MonoBehaviour
         float target_x = _input.Horizontal * _maxSpeed * Time.deltaTime;
         float target_y = _input.Vertical * _maxSpeed * Time.deltaTime;
 
-        //_currentSpeed.x = Mathf.Lerp(_currentSpeed.x, target_x, 0.5f);
-        //_currentSpeed.y = Mathf.Lerp(_currentSpeed.y, target_y, 0.5f);
-
-        _currentSpeed.x = target_x;
-        _currentSpeed.y = target_y;
+        _currentSpeed.x = Mathf.Lerp(_currentSpeed.x, target_x, 0.5f);
+        _currentSpeed.y = Mathf.Lerp(_currentSpeed.y, target_y, 0.5f);
 
         if (_input.Horizontal != 0 || _input.Vertical != 0)
         {

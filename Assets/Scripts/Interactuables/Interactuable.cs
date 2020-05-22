@@ -15,6 +15,7 @@ public abstract class Interactuable : MonoBehaviour
     {
         playerInRange = false;
         used = false;
+        Init();
     }
     
     void Update()
@@ -49,6 +50,7 @@ public abstract class Interactuable : MonoBehaviour
     }
 
     public abstract void Interact();
+    public abstract void Init();
 
     private void OnTriggerEnter2D(Collider2D collision)
     {

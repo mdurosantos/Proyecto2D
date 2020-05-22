@@ -2,21 +2,22 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(Collider2D))]
 public class Door : Interactuable
 {
+    private bool open;
+    private Animator anim;
+
+    public override void Init()
+    {
+        open = false;
+        anim = GetComponentInChildren<Animator>();
+
+    }
 
     public override void Interact()
     {
-        Collider2D[] colliders = GetComponents<Collider2D>();
-        foreach(Collider2D col in colliders)
-        {
-            if (!col.isTrigger)
-            {
-                //col.enabled = !col.enabled;
-                gameObject.SetActive(false);//temp
-                break;
-            }
-        }
+        open = !open;
+        anim.SetBool("open", open);
     }
+
 }
