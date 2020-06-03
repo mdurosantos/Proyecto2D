@@ -5,12 +5,13 @@ using UnityEngine;
 public class EnemyPatrolVisionCollider : MonoBehaviour
 {
     private EnemyPatrol patrol;
-    [SerializeField] private Transform player = null;
+    private Transform player;
     private PlayerVisibility visibility;
 
     // Start is called before the first frame update
     void Start()
     {
+        player = LevelAccess.GetPlayerPos();
         patrol = GetComponent<EnemyPatrol>();
         visibility = player.GetComponent<PlayerVisibility>();
     }

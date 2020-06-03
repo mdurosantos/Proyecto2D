@@ -14,7 +14,6 @@ public class EnemyPatrol : MonoBehaviour
     private int randomSpot; //Index aleatorio del Waypoint o de la Rotación
     private bool playerDetected = false; //El enemigo ha detectado al ugador
     [SerializeField] private float[] directionAngles = null; //Ángulos a los que rotará el enemigo durante RandomRotation
-    [SerializeField] private Transform playerLocation = null; //Localización del jugador
     [SerializeField] private Transform enemySpot = null; //Waypoint al que "pertenece" el enemigo.
     private PlayerVisibility playerVisibility; 
     private AIPath path;
@@ -22,6 +21,7 @@ public class EnemyPatrol : MonoBehaviour
     //[SerializeField] private bool randomRotation = false;
     private float randomAngle;
     private int nextSpot;
+    private Transform playerLocation; //Localización del jugador
     [SerializeField] private float speed = 3f;
 
 
@@ -29,6 +29,7 @@ public class EnemyPatrol : MonoBehaviour
     void Start()
     {
         path = GetComponent<AIPath>();
+        playerLocation = LevelAccess.GetPlayerPos();
         destination = GetComponent<AIDestinationSetter>();
         playerVisibility = playerLocation.GetComponent<PlayerVisibility>();
         waitTime = startWaitTime;

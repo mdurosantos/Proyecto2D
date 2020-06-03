@@ -5,11 +5,13 @@ using UnityEngine.SceneManagement;
 
 public class CatchedCollider : MonoBehaviour
 {
-    [SerializeField] private Transform player = null; //Localización del jugador
+    private Transform player;
     private PlayerVisibility visibility;
+
 
     void Start()
     {
+        player = LevelAccess.GetPlayerPos();
         visibility = player.GetComponent<PlayerVisibility>();
     }
     private void OnTriggerEnter2D(Collider2D collider)
