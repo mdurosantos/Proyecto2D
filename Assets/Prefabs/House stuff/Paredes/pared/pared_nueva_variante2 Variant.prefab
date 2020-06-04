@@ -10,7 +10,7 @@ PrefabInstance:
     - target: {fileID: 5454153042320683589, guid: e5879334d2b1d714b9b11ce2a781bfa8,
         type: 3}
       propertyPath: m_Name
-      value: pared_nueva_variante2
+      value: pared_nueva_variante2 Variant
       objectReference: {fileID: 0}
     - target: {fileID: 6020711577562498713, guid: e5879334d2b1d714b9b11ce2a781bfa8,
         type: 3}
@@ -71,6 +71,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9073155192781078614, guid: e5879334d2b1d714b9b11ce2a781bfa8,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 100
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e5879334d2b1d714b9b11ce2a781bfa8, type: 3}

@@ -70,7 +70,12 @@ PrefabInstance:
     - target: {fileID: 8687583182017197281, guid: 77b3f6dc1be71c44d89d31bf79bfa794,
         type: 3}
       propertyPath: m_Name
-      value: pared_con_marco2
+      value: pared_con_marco_variante2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8687583182017197281, guid: 77b3f6dc1be71c44d89d31bf79bfa794,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 77b3f6dc1be71c44d89d31bf79bfa794, type: 3}
