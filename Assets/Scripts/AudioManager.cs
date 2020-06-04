@@ -20,7 +20,7 @@ public class AudioManager : MonoBehaviour
         {
             case "step":
                 Debug.Log("STEP");
-                audioSrc.PlayOneShot(Resources.Load<AudioClip>("Audio/player_footsteps/player_footsteps_"+ Random.Range(1, 18)), 1f);
+                audioSrc.PlayOneShot(Resources.Load<AudioClip>("Audio/player_footsteps/player_footsteps_"+ Random.Range(1, 18)), 0.5f);
                 break;
         }
     }
