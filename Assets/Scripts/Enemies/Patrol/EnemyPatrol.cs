@@ -12,7 +12,7 @@ public class EnemyPatrol : MonoBehaviour
     public Transform[] moveSpots; //Waypoints a los que se moverá el enemigo durante Patrol
     [SerializeField] private int initialSpot = 0; //Index del primer Waypoint al que se moverá el enemigo
     private int randomSpot; //Index aleatorio del Waypoint o de la Rotación
-    private bool playerDetected = false; //El enemigo ha detectado al ugador
+    public bool playerDetected = false; //El enemigo ha detectado al ugador
     [SerializeField] private float[] directionAngles = null; //Ángulos a los que rotará el enemigo durante RandomRotation
     [SerializeField] private Transform enemySpot = null; //Waypoint al que "pertenece" el enemigo.
     private PlayerVisibility playerVisibility; 
@@ -169,6 +169,30 @@ public class EnemyPatrol : MonoBehaviour
     public void SetPlayerDetected(bool detected)
     {
         playerDetected = detected;
+        if (!detected)
+        {
+            waitTime = startWaitTime;
+            switch (enemyType)
+            {
+                case EnemyType.ConstantRotation:
+                    destination.target = enemySpot;
+                    nextSpot = 0;
+                    break;
+                case EnemyType.RandomRotation:
+                    destination.target = enemySpot;
+                    randomSpot = Random.Range(0, directionAngles.Length);
+                    break;
+                default:
+                    randomSpot = Random.Range(0, moveSpots.Length);
+                    destination.target = moveSpots[randomSpot];
+                    break;
+            }
+        }
+    }
+
+    public void ResetPosition()
+    {
+        transform.position = enemySpot.position;
     }
 
     private bool PlayerDetected()
