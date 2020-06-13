@@ -9,7 +9,6 @@ public class AudioManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //step = Resources.Load<AudioClip>("Audio/player_footsteps/player_footsteps_");
         audioSrc = GetComponent<AudioSource>();
     }
 
