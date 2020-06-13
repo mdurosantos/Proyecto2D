@@ -15,7 +15,7 @@ public abstract class Hauntable : MonoBehaviour
     private bool haunted;
     [SerializeField] [Range(0.2f, 2f)] private float offsetScale = 1f;
     [SerializeField] [Range(0.1f, 3f)] private float hauntTime = 0.5f;
-    [SerializeField] private Slider slider = null;
+    private Slider slider;
     private float hauntAmount;
 
     void Start()
@@ -24,7 +24,6 @@ public abstract class Hauntable : MonoBehaviour
         haunted = false;
         camControl = Camera.main.GetComponent<CameraController>();
         hauntAmount = 0f;
-        slider.gameObject.SetActive(false);
         Init();
     }
 
@@ -91,6 +90,7 @@ public abstract class Hauntable : MonoBehaviour
             if (player == null)
             {
                 player = collision.gameObject;
+                slider = player.transform.Find("Canvas/Slider").gameObject.GetComponent<Slider>();
                 playerVisibility = player.GetComponent<PlayerVisibility>();
                 playerMovement = player.GetComponent<PlayerMovement>();
                 playerCollision = player.GetComponent<Collider2D>();

@@ -11,13 +11,18 @@ public class Door : Interactuable
     {
         open = false;
         anim = GetComponentInChildren<Animator>();
-
     }
 
     public override void Interact()
     {
         open = !open;
         anim.SetBool("open", open);
+        CollidersActive(!open);
+    }
+
+    private void CollidersActive(bool active)
+    {
+        foreach(Collider2D c in GetComponentsInChildren<Collider2D>()) if (!c.isTrigger) c.enabled = active;
     }
 
 }
