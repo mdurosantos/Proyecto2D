@@ -93,7 +93,6 @@ public class EnemyPatrolVisionCollider : MonoBehaviour
                     patrol.SetPlayerDetected(true);
                     catchAmount = pursueTime;
                     caught = true;
-                    Debug.Log("Player in range");
                 }
                 else
                 {

@@ -23,7 +23,6 @@ public class CatchedCollider : MonoBehaviour
         if (collider.tag == "Player" && visibility.getPlayerVisible())
         {
             //SceneController.LoadCurrentScene();
-            Debug.Log(resetEnemiesPosition.Length);
             foreach (GameObject enemy in resetEnemiesPosition)
             {
                 enemyPatrol= enemy.GetComponent<EnemyPatrol>();

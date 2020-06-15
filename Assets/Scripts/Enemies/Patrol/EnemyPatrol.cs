@@ -188,6 +188,10 @@ public class EnemyPatrol : MonoBehaviour
                     break;
             }
         }
+        else
+        {
+            AudioManager.PlaySound("player_detected");
+        }
     }
 
     public void ResetPosition()

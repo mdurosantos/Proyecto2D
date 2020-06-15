@@ -17,10 +17,11 @@ public class Door : Interactuable
     {
         open = !open;
         anim.SetBool("open", open);
-        CollidersActive(!open);
+        
+        if (open) AudioManager.PlaySound("open_door");
     }
 
-    private void CollidersActive(bool active)
+    public void CollidersActive(bool active)
     {
         foreach(Collider2D c in GetComponentsInChildren<Collider2D>()) if (!c.isTrigger) c.enabled = active;
     }
