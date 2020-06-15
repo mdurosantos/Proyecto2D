@@ -25,7 +25,7 @@ public class PlayerAnimations : MonoBehaviour
         if (!stopped) anim.SetInteger("direction", direction);
     }
 
-    public void Walk(Vector2 input)
+    /*public void Walk(Vector2 input)
     {
         if (stopped)
         {
@@ -58,6 +58,43 @@ public class PlayerAnimations : MonoBehaviour
                 else anim.SetInteger("direction", 6);
             }
         }
+    }*/
+
+    public void Walk(Vector2 input)
+    {
+        if (stopped)
+        {
+            stopped = false;
+            anim.SetBool("stop", false);
+        }
+        bool left = input.x <= 0f;
+        bool down = input.y <= 0f;
+        Debug.Log(Mathf.Abs(input.x));
+        if (Mathf.Abs(input.x) <= diagonalThreshold) //vertical
+        {
+            if (down) direction = 1;
+            else direction = 5;
+
+        }
+        else if (Mathf.Abs(input.y) <= diagonalThreshold) //horizontal
+        {
+            if (left) direction = 3;
+            else direction = 7;
+        }
+        else //diagonal
+        {
+            if (left)
+            {
+                if (down) direction = 2;
+                else direction = 4;
+            }
+            else
+            {
+                if (down) direction = 8;
+                else direction = 6;
+            }
+        }
+        anim.SetInteger("direction", direction);
     }
 
     public void Idle()

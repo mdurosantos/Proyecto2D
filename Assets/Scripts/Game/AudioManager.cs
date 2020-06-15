@@ -8,6 +8,8 @@ public class AudioManager : MonoBehaviour
     public static AudioClip key;
     public static AudioClip open_door;
     public static AudioClip player_detected;
+    public static AudioClip haunt;
+    public static AudioClip dehaunt;
     static AudioSource audioSrc;
 
     void Start()
@@ -20,6 +22,8 @@ public class AudioManager : MonoBehaviour
         key = Resources.Load<AudioClip>("Audio/key");
         open_door = Resources.Load<AudioClip>("Audio/open_door");
         player_detected = Resources.Load<AudioClip>("Audio/player_detected");
+        haunt = Resources.Load<AudioClip>("Audio/haunt");
+        dehaunt = Resources.Load<AudioClip>("Audio/dehaunt");
         audioSrc = GetComponent<AudioSource>();
     }
 
@@ -39,6 +43,12 @@ public class AudioManager : MonoBehaviour
                 break;
             case "player_detected":
                 audioSrc.PlayOneShot(player_detected, 0.8f);
+                break;
+            case "haunt":
+                audioSrc.PlayOneShot(haunt, 0.8f);
+                break;
+            case "dehaunt":
+                audioSrc.PlayOneShot(dehaunt, 0.8f);
                 break;
         }
     }

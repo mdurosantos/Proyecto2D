@@ -37,6 +37,7 @@ public abstract class Hauntable : MonoBehaviour
             {
                 if (hauntAmount >= hauntTime)
                 {
+                    AudioManager.PlaySound("haunt");
                     slider.gameObject.SetActive(false);
                     haunted = true;
                     playerVisibility.setPlayerVisible(false);
@@ -63,6 +64,7 @@ public abstract class Hauntable : MonoBehaviour
         {
             if (!Input.GetButton("Interact"))
             {
+                AudioManager.PlaySound("dehaunt");
                 hauntAmount = 0f;
                 haunted = false;
                 playerVisibility.setPlayerVisible(true);
@@ -72,7 +74,8 @@ public abstract class Hauntable : MonoBehaviour
                 player.GetComponent<SpriteRenderer>().color = Color.white; //TEMP to make player visible again
                 SwitchDimension();
             }
-            else Interact();
+            else {
+                Interact(); }
         }
     }
     private void SwitchDimension()
