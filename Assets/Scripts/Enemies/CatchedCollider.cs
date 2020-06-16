@@ -10,6 +10,7 @@ public class CatchedCollider : MonoBehaviour
     private PlayerPos resetPlayerPosition;
     private GameObject [] resetEnemiesPosition;
     private EnemyPatrol enemyPatrol;
+    private GameFlowController gameFlowController;
 
     void Start()
     {
@@ -17,12 +18,16 @@ public class CatchedCollider : MonoBehaviour
         visibility = player.GetComponent<PlayerVisibility>();
         resetPlayerPosition = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerPos>();
         resetEnemiesPosition = GameObject.FindGameObjectsWithTag("Enemy");
+        gameFlowController= GameObject.FindGameObjectWithTag("GameFlowController").GetComponent<GameFlowController>();
     }
     private void OnTriggerEnter2D(Collider2D collider)
     {
         if (collider.tag == "Player" && visibility.getPlayerVisible())
         {
             //SceneController.LoadCurrentScene();
+            
+            
+            gameFlowController.GameOver();
             foreach (GameObject enemy in resetEnemiesPosition)
             {
                 enemyPatrol= enemy.GetComponent<EnemyPatrol>();

@@ -6,6 +6,7 @@ public class InGameMenuController : MonoBehaviour
 {
     public MenuPanel MenuPause;
     public static InGameMenuController Instance;
+    private SpriteRenderer gameOverScreen;
 
 
     private void Awake()
@@ -15,6 +16,7 @@ public class InGameMenuController : MonoBehaviour
     void Start()
     {
         SetUnPaused();
+        gameOverScreen = GameObject.FindGameObjectWithTag("GameOverScreen").GetComponent<SpriteRenderer>();
     }
 
     public void SetPaused()
@@ -27,6 +29,15 @@ public class InGameMenuController : MonoBehaviour
         MenuPause.Hide();
     }
 
+    public void SetGameOver()
+    {
+        gameOverScreen.enabled = true;
+    }
+
+    public void SetNotGameOver()
+    {
+        gameOverScreen.enabled = false;
+    }
 
     public void OnUnPauseClicked()
     {

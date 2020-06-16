@@ -69,7 +69,6 @@ public class PlayerAnimations : MonoBehaviour
         }
         bool left = input.x <= 0f;
         bool down = input.y <= 0f;
-        Debug.Log(Mathf.Abs(input.x));
         if (Mathf.Abs(input.x) <= diagonalThreshold) //vertical
         {
             if (down) direction = 1;

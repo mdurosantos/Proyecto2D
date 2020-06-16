@@ -10,6 +10,7 @@ public class AudioManager : MonoBehaviour
     public static AudioClip player_detected;
     public static AudioClip haunt;
     public static AudioClip dehaunt;
+    public static AudioClip game_over;
     static AudioSource audioSrc;
 
     void Start()
@@ -24,6 +25,7 @@ public class AudioManager : MonoBehaviour
         player_detected = Resources.Load<AudioClip>("Audio/player_detected");
         haunt = Resources.Load<AudioClip>("Audio/haunt");
         dehaunt = Resources.Load<AudioClip>("Audio/dehaunt");
+        game_over = Resources.Load<AudioClip>("Audio/game_over");
         audioSrc = GetComponent<AudioSource>();
     }
 
@@ -49,6 +51,9 @@ public class AudioManager : MonoBehaviour
                 break;
             case "dehaunt":
                 audioSrc.PlayOneShot(dehaunt, 0.8f);
+                break;
+            case "game_over":
+                audioSrc.PlayOneShot(game_over, 0.8f);
                 break;
         }
     }

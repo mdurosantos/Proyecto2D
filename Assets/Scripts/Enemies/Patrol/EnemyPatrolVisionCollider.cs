@@ -59,7 +59,6 @@ public class EnemyPatrolVisionCollider : MonoBehaviour
                     patrol.SetPlayerDetected(false);
                     catchAmount = 0f;
                     caught = false;
-                    Debug.Log("Player ran away");
                 }
                 else
                 {

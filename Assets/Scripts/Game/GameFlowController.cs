@@ -26,6 +26,7 @@ public class GameFlowController : MonoBehaviour
         {
             paused = false;
             UnPauseGame();
+            NotGameOver();
         }
     }
 
@@ -51,7 +52,18 @@ public class GameFlowController : MonoBehaviour
         InGameMenuController.Instance.SetUnPaused();
     }
 
-    
+    public void GameOver()
+    {
+        Time.timeScale = 0;
+        InGameMenuController.Instance.SetGameOver();
+        AudioManager.PlaySound("game_over");
+    }
+
+    public void NotGameOver()
+    {
+        Time.timeScale = 1;
+        InGameMenuController.Instance.SetNotGameOver();
+    }
 
     /*public void RepeatLevel()
     {
