@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: blue key
   m_EditorClassIdentifier: 
   itemName: Blue Key
-  itemImage: {fileID: 21300000, guid: 7399d768f80535f4ba54c64014dfe529, type: 3}
+  itemImage: {fileID: 21300000, guid: 09efa98d4025ad7418e906d56304982c, type: 3}
