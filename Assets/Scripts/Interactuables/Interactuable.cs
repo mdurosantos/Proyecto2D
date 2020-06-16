@@ -7,7 +7,7 @@ public abstract class Interactuable : MonoBehaviour
 {
     [SerializeField] private bool oneUse = true;
     [SerializeField] private List<Item> requirements = new List<Item>();
-    [SerializeField] private List<Item> rewards = new List<Item>();
+    [SerializeField] protected List<Item> rewards = new List<Item>();
     private bool playerInRange;
     private bool used;
 

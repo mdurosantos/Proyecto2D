@@ -7,6 +7,7 @@ public class AudioManager : MonoBehaviour
     public static AudioClip[] step;
     public static AudioClip key;
     public static AudioClip open_door;
+    public static AudioClip open_closet;
     public static AudioClip player_detected;
     public static AudioClip haunt;
     public static AudioClip dehaunt;
@@ -22,6 +23,7 @@ public class AudioManager : MonoBehaviour
         }
         key = Resources.Load<AudioClip>("Audio/key");
         open_door = Resources.Load<AudioClip>("Audio/open_door");
+        open_closet = Resources.Load<AudioClip>("Audio/open_closet");
         player_detected = Resources.Load<AudioClip>("Audio/player_detected");
         haunt = Resources.Load<AudioClip>("Audio/haunt");
         dehaunt = Resources.Load<AudioClip>("Audio/dehaunt");
@@ -42,6 +44,9 @@ public class AudioManager : MonoBehaviour
                 break;
             case "open_door":
                 audioSrc.PlayOneShot(open_door, 0.3f);
+                break;
+            case "open_closet":
+                audioSrc.PlayOneShot(open_closet, 0.3f);
                 break;
             case "player_detected":
                 audioSrc.PlayOneShot(player_detected, 0.8f);
