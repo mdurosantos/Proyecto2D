@@ -56,5 +56,9 @@ public class PlayerMovement : MonoBehaviour
         else animations.Idle();
 
     }
-    public void setCanMove(bool can) { canMove = can; }
+    public void setCanMove(bool can) {
+        canMove = can;
+        rb.velocity = Vector3.zero;
+        animations.Idle();
+    }
 }

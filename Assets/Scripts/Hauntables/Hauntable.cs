@@ -40,6 +40,7 @@ public abstract class Hauntable : MonoBehaviour
                     AudioManager.PlaySound("haunt");
                     slider.gameObject.SetActive(false);
                     haunted = true;
+                    playerMovement.setCanMove(false);
                     playerVisibility.setPlayerVisible(false);
                     playerMovement.setCanMove(false);
                     camControl.ChangeTarget(transform, offsetScale);
