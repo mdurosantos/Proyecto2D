@@ -8,6 +8,7 @@ TagManager:
   - GM
   - GameOverScreen
   - GameFlowController
+  - loading
   layers:
   - Default
   - TransparentFX
