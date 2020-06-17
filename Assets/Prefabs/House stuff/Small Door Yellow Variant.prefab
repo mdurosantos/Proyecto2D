@@ -117,7 +117,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2141936664}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.225, y: 0.016, z: -1.666}
+  m_LocalPosition: {x: -0.23, y: 0.21, z: -1.666}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2086862819270857233}
@@ -331,7 +331,7 @@ PrefabInstance:
     - target: {fileID: 8593190923826953980, guid: 5ca253a88aa0ef64e9f5ac264c0ffa44,
         type: 3}
       propertyPath: m_Name
-      value: Small Door Yellow
+      value: Small Door Yellow Variant
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5ca253a88aa0ef64e9f5ac264c0ffa44, type: 3}
