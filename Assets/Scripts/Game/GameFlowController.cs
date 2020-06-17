@@ -50,6 +50,13 @@ public class GameFlowController : MonoBehaviour
             MoveCursor();
             CheckCursor();
         }
+        else if (PauseUnpressed() && gameover)
+        {
+            gameover = false;
+            paused = false;
+            UnPauseGame();
+            NotGameOver();
+        }
     }
 
     private void MoveCursor()
