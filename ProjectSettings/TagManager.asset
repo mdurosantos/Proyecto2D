@@ -9,6 +9,9 @@ TagManager:
   - GameOverScreen
   - GameFlowController
   - loading
+  - PauseScreen
+  - Resume
+  - Quit
   layers:
   - Default
   - TransparentFX
