@@ -42,6 +42,7 @@ public class GameFlowController : MonoBehaviour
             }
             else
             {
+                Time.timeScale = 1;
                 SceneController.LoadScene("Start");
             }
         }
