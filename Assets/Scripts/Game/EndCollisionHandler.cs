@@ -17,7 +17,7 @@ public class EndCollisionHandler : MonoBehaviour
         if (collider.tag == "Player")
         {
             gm.lastCheckpointPos = new Vector2(0,0);
-            SceneController.LoadScene(nextScene);
+            SceneController.LoadNextScene();
 
         }
     }
