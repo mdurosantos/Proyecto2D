@@ -3230,6 +3230,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -49.74
       objectReference: {fileID: 0}
+    - target: {fileID: 5315820635353580071, guid: bf7c1ae4bedcf4b4692693e26b34f6f2,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bf7c1ae4bedcf4b4692693e26b34f6f2, type: 3}
 --- !u!4 &1225045713580589573 stripped
@@ -3335,6 +3340,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5851282942928582327}
     m_Modifications:
+    - target: {fileID: 654055314906189092, guid: f10354aa9b24f0c41ae0e117cb648ac9,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 6422099500445755577, guid: f10354aa9b24f0c41ae0e117cb648ac9,
         type: 3}
       propertyPath: m_Name
@@ -3654,6 +3664,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: mesaHospital
+      objectReference: {fileID: 0}
+    - target: {fileID: 8423526377097717337, guid: 8ad64ec706e9ace449dcd3af15ab91e0,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8ad64ec706e9ace449dcd3af15ab91e0, type: 3}

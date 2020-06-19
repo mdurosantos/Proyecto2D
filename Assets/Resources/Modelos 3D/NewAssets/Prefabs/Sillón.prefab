@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6259801069587023688}
   - component: {fileID: 2238513072838448939}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: "Sill\xF3n"
   m_TagString: Untagged
   m_Icon: {fileID: 0}

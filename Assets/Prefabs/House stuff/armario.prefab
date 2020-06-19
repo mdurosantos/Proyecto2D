@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 804002010999451662}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: puerta_der
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -40,7 +40,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3994677247461919}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: puerta_izq
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -75,7 +75,7 @@ GameObject:
   - component: {fileID: 6962502845375898639}
   - component: {fileID: 7567986141037096250}
   - component: {fileID: 9134964945832557435}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: armario
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -257,6 +257,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: armario_der (1)
       objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 027451479c3189048a33100ac01527df,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 2534866581884222612, guid: 027451479c3189048a33100ac01527df,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 027451479c3189048a33100ac01527df, type: 3}
 --- !u!4 &8180576370083592251 stripped
@@ -336,6 +346,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: armario_base
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 4353f47eaa6c7034c9ac5fbe3c85849b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 2534866581884222612, guid: 4353f47eaa6c7034c9ac5fbe3c85849b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4353f47eaa6c7034c9ac5fbe3c85849b, type: 3}
@@ -421,6 +441,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 85d433777d28a6b4d9e511d5ffd8b753,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 2534866581884222612, guid: 85d433777d28a6b4d9e511d5ffd8b753,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 85d433777d28a6b4d9e511d5ffd8b753, type: 3}

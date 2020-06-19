@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8485405804088009677}
   - component: {fileID: 8485405804088009679}
   - component: {fileID: 8485405804088009676}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: default
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -89,7 +89,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8485405804284308167}
   - component: {fileID: 8485405804284308166}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: escritorio
   m_TagString: Untagged
   m_Icon: {fileID: 0}

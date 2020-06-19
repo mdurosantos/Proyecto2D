@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3675275509640496396}
   - component: {fileID: 2648669175529539620}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: SillonBlood
   m_TagString: Untagged
   m_Icon: {fileID: 0}

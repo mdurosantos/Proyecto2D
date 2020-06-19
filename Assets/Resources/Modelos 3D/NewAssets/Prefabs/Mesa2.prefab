@@ -89,7 +89,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5573783193439375103}
   - component: {fileID: 1249623845524048708}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Mesa2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
