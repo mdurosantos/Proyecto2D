@@ -3,55 +3,29 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyPatrol : MonoBehaviour
+public class EnemyPatrol : Enemy
 {
 
     [SerializeField] private EnemyType enemyType = EnemyType.ConstantRotation; //Sirve para elegir el comportamiento del enemigo
-    public float startWaitTime; //Es el tiempo que transcurre entre movimiento y movimiento o rotación y rotación
-    private float waitTime; //Tiempo de espera transcurrido
     public Transform[] moveSpots; //Waypoints a los que se moverá el enemigo durante Patrol
     [SerializeField] private int initialSpot = 0; //Index del primer Waypoint al que se moverá el enemigo
-    private int randomSpot; //Index aleatorio del Waypoint o de la Rotación
-    public bool playerDetected = false; //El enemigo ha detectado al ugador
-    [SerializeField] private float[] directionAngles = null; //Ángulos a los que rotará el enemigo durante RandomRotation
-    [SerializeField] private Transform enemySpot = null; //Waypoint al que "pertenece" el enemigo.
-    private PlayerVisibility playerVisibility; 
     private AIPath path;
-    private AIDestinationSetter destination;
     //[SerializeField] private bool randomRotation = false;
     private float randomAngle;
     private int nextSpot;
-    private Transform playerLocation; //Localización del jugador
-    [SerializeField] private float speed = 3f;
 
-
-    // Start is called before the first frame update
-    void Start()
+    
+    public override void Init()
     {
         path = GetComponent<AIPath>();
-        playerLocation = LevelAccess.GetPlayerPos();
-        destination = GetComponent<AIDestinationSetter>();
-        playerVisibility = playerLocation.GetComponent<PlayerVisibility>();
-        waitTime = startWaitTime;
-        if(moveSpots.Length>0)
-            destination.target = moveSpots[initialSpot];
         nextSpot = 0;
-        if (enemyType == EnemyType.Patrol)
-        {
-            randomSpot = initialSpot;
-        }
-        else
-        {
-            randomSpot = Random.Range(0, directionAngles.Length);
-        }
-     
+        if (moveSpots.Length>0) destination.target = moveSpots[initialSpot];
+        if (enemyType == EnemyType.Patrol)  randomSpot = initialSpot;
+        else randomSpot = Random.Range(0, directionAngles.Length);
         //NewRandomAngle();
     }
-
-
-
-    // Update is called once per frame
-    void Update()
+    
+    public override void Act()
     {
         if (PlayerIsHidden())
         {
@@ -96,7 +70,6 @@ public class EnemyPatrol : MonoBehaviour
             }
         }
     }
-
 
     private void Patrol()
     {        

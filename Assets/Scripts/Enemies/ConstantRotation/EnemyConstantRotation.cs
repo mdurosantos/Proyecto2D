@@ -3,34 +3,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyConstantRotation : MonoBehaviour
+public class EnemyConstantRotation : Enemy
 {
-    [SerializeField] private float startWaitTime = 1f;
-    private float waitTime;
-    [SerializeField] private float[] directionAngles = null;
     private int nextSpot;
-    [SerializeField] private float speed = 3f;
-    [SerializeField] private Transform playerLocation = null;
-    private PlayerVisibility playerVisibility;
-    private AIDestinationSetter destination;
-    private bool playerDetected = false;
-    [SerializeField] private Transform enemySpot = null;
     [SerializeField] private bool randomRotation = false;
     private float randomAngle;
-
-    // Start is called before the first frame update
-    void Start()
+    
+    public override void Init()
     {
-        destination = GetComponent<AIDestinationSetter>();
-        playerVisibility = playerLocation.GetComponent<PlayerVisibility>();
         nextSpot = 0;
-        waitTime = startWaitTime;
         NewRandomAngle();
-
     }
-
-    // Update is called once per frame
-    void Update()
+    
+    public override void Act()
     {
         if (!playerVisibility.getPlayerVisible() && playerDetected)
         {
@@ -38,14 +23,9 @@ public class EnemyConstantRotation : MonoBehaviour
             nextSpot = 0;
             SetPlayerDetected(false);
         }
-        if (playerDetected && playerVisibility.getPlayerVisible())
-        {
-            destination.target = playerLocation;
-        }
-        else
-        {
-            Patrol();
-        }
+
+        if (playerDetected && playerVisibility.getPlayerVisible()) destination.target = playerLocation;
+        else Patrol();
     }
 
     void Patrol()
@@ -58,24 +38,13 @@ public class EnemyConstantRotation : MonoBehaviour
             {
                 if (!randomRotation)
                 {
-                    if (nextSpot < directionAngles.Length - 1)
-                    {
-                        nextSpot++;
-                        Debug.Log("Sumado");
-                    }
-                    else
-                    {
-                        nextSpot = 0;
-                        Debug.Log("Reseteado");
-                    }
+                    if (nextSpot < directionAngles.Length - 1) nextSpot++;
+                    else nextSpot = 0;
                 }
                 else NewRandomAngle();
                 waitTime = startWaitTime;
             }
-            else
-            {
-                waitTime -= Time.deltaTime;
-            }
+            else waitTime -= Time.deltaTime;
         }
     }
 

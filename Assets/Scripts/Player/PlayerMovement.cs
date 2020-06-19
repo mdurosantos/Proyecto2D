@@ -8,7 +8,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float _maxSpeed = 3f;
     private Vector2 _currentSpeed;
     private bool canMove;
-    [SerializeField] private float acceleration;
+    [SerializeField] private float acceleration = 0f;
     private PlayerInput _input;
     private PlayerAnimations animations;
 

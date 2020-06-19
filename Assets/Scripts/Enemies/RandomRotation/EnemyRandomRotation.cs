@@ -3,30 +3,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyRandomRotation : MonoBehaviour
-{
-    [SerializeField] private float startWaitTime = 1f;
-    private float waitTime;
-    [SerializeField] private float[] directionAngles = null;
-    private bool playerDetected = false;
-    [SerializeField] private Transform playerLocation = null;
-    private PlayerVisibility playerVisibility;
-    private int randomSpot;
-    private AIDestinationSetter destination;
-    [SerializeField] private Transform enemySpot = null;
-
-    // Start is called before the first frame update
-    void Start()
+public class EnemyRandomRotation : Enemy
+{    
+    public override void Init()
     {
-        destination = GetComponent<AIDestinationSetter>();
-        playerVisibility = playerLocation.GetComponent<PlayerVisibility>();
         randomSpot = Random.Range(0, directionAngles.Length);
-        waitTime = startWaitTime;
-
     }
 
-    // Update is called once per frame
-    void Update()
+    public override void Act()
     {
         if (!playerVisibility.getPlayerVisible() && playerDetected)
         {
