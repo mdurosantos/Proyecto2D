@@ -19,7 +19,7 @@ public class EnemyPatrolVisionCollider : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        slider = transform.Find("Canvas/Slider").gameObject.GetComponent<Slider>();
+        slider = transform.parent.Find("EnemyAnimator/Canvas/Slider").gameObject.GetComponent<Slider>();
         player = LevelAccess.GetPlayerPos();
         patrol = GetComponent<EnemyPatrol>();
         visibility = player.GetComponent<PlayerVisibility>();
