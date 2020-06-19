@@ -15,8 +15,8 @@ EditorBuildSettings:
     path: Assets/Resources/Scenes/0Level.unity
     guid: f8ec992cce32c2a4cb5984f68ed37120
   - enabled: 1
-    path: Assets/Resources/Scenes/1LevelJordi.unity
-    guid: bbadb57fa1aa9a84291c176562ea2b6b
+    path: Assets/Resources/Scenes/1LevelJordi 1.unity
+    guid: efe9ea085928fb64fb4c156f227d8cea
   - enabled: 1
     path: Assets/Resources/Scenes/Cinema2.unity
     guid: 6b67e9b00b099ab41b0a651c198689f1
