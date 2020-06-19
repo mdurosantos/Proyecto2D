@@ -5,7 +5,7 @@ using UnityEngine;
 public class StartSceneController : MonoBehaviour
 {
     [SerializeField]
-    private string firstLevel;
+    private string level;
     /*private SpriteRenderer loading;
 
     private void Start()
@@ -17,7 +17,7 @@ public class StartSceneController : MonoBehaviour
     {
         if (Input.GetButton("Interact")) {
             //loading.enabled = true;
-            SceneController.LoadNextScene();
+            SceneController.LoadScene(level);
         }
     }
 
