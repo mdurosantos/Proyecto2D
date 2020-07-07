@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 [RequireComponent(typeof(Collider2D))]
 public abstract class Interactuable : MonoBehaviour
@@ -10,12 +11,14 @@ public abstract class Interactuable : MonoBehaviour
     [SerializeField] protected List<Item> rewards = new List<Item>();
     private bool playerInRange;
     private bool used;
+    private Text feedback;
 
     void Start()
     {
         playerInRange = false;
         used = false;
         Init();
+        feedback = GameObject.FindGameObjectWithTag("Feedback").GetComponent<Text>();
     }
     
     void Update()
@@ -27,9 +30,14 @@ public abstract class Interactuable : MonoBehaviour
                 if (HasAllRequiredItems())
                 {
                     used = true;
+                    feedback.text = "";
                     Inventory.instance.RemoveItems(requirements);
                     Interact();
                     if (rewards.Count > 0) Inventory.instance.AddItems(rewards);
+                }
+                else
+                {
+                    feedback.text = "You need a key";
                 }
             }
             else Debug.Log("This one-use item has already been used.");
@@ -55,10 +63,12 @@ public abstract class Interactuable : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         playerInRange = collision.CompareTag("Player");
+        if (playerInRange && !used) feedback.text = "Press Space to Interact";
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.CompareTag("Player")) playerInRange = false;
+        if (!playerInRange) feedback.text = "";
     }
 }

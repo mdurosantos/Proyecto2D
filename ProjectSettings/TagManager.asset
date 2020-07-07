@@ -12,6 +12,8 @@ TagManager:
   - PauseScreen
   - Resume
   - Quit
+  - LevelChanger
+  - Feedback
   layers:
   - Default
   - TransparentFX

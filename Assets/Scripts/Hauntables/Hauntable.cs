@@ -17,6 +17,7 @@ public abstract class Hauntable : MonoBehaviour
     [SerializeField] [Range(0.1f, 3f)] private float hauntTime = 0.5f;
     private Slider slider;
     private float hauntAmount;
+    private Text feedback;
 
     void Start()
     {
@@ -25,6 +26,7 @@ public abstract class Hauntable : MonoBehaviour
         camControl = Camera.main.GetComponent<CameraController>();
         hauntAmount = 0f;
         Init();
+        feedback = GameObject.FindGameObjectWithTag("Feedback").GetComponent<Text>();
     }
 
     public abstract void Init();
@@ -93,11 +95,16 @@ public abstract class Hauntable : MonoBehaviour
             playerInRange = true;
             if (player == null)
             {
+                feedback.text = "";
                 player = collision.gameObject;
                 slider = player.transform.Find("Canvas/Slider").gameObject.GetComponent<Slider>();
                 playerVisibility = player.GetComponent<PlayerVisibility>();
                 playerMovement = player.GetComponent<PlayerMovement>();
                 playerCollision = player.GetComponent<Collider2D>();
+            }
+            else
+            {
+                feedback.text = "Hold Space to Haunt";
             }
         }
     }
@@ -105,5 +112,6 @@ public abstract class Hauntable : MonoBehaviour
     private void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.CompareTag("Player")) playerInRange = false;
+        if(!playerInRange) feedback.text = "";
     }
 }

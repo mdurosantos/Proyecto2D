@@ -10,6 +10,7 @@ public class StartController : MonoBehaviour
     private static bool cursorInResume = true;
     private CanvasGroup resume;
     private CanvasGroup quit;
+    private LevelChanger levelChanger;
 
     private void Awake()
     {
@@ -20,6 +21,7 @@ public class StartController : MonoBehaviour
     {
         resume = GameObject.FindGameObjectWithTag("Resume").GetComponent<CanvasGroup>();
         quit = GameObject.FindGameObjectWithTag("Quit").GetComponent<CanvasGroup>();
+        levelChanger = GameObject.FindGameObjectWithTag("LevelChanger").GetComponent<LevelChanger>();
     }
     // Update is called once per frame
     void Update()
@@ -29,7 +31,8 @@ public class StartController : MonoBehaviour
             AudioManager.PlaySound("okUI");
             if (cursorInResume)
             {
-                SceneController.LoadNextScene();
+                levelChanger.FadeToLevel("next");
+                //SceneController.LoadNextScene();
             }
             else
             {

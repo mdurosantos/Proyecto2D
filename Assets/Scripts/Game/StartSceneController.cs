@@ -6,18 +6,20 @@ public class StartSceneController : MonoBehaviour
 {
     [SerializeField]
     private string level;
-    /*private SpriteRenderer loading;
+    private LevelChanger levelChanger;
+    /*private SpriteRenderer loading;*/
 
     private void Start()
     {
-        loading = GameObject.FindGameObjectWithTag("loading").GetComponent<SpriteRenderer>();
-    }*/
+        levelChanger = GameObject.FindGameObjectWithTag("LevelChanger").GetComponent<LevelChanger>();
+    }
 
     void Update()
     {
         if (Input.GetButton("Interact")) {
             //loading.enabled = true;
-            SceneController.LoadScene(level);
+            levelChanger.FadeToLevel(level);
+            //SceneController.LoadScene(level);
         }
     }
 
