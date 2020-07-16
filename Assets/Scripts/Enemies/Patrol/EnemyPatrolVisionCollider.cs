@@ -11,6 +11,7 @@ public class EnemyPatrolVisionCollider : MonoBehaviour
     private Slider slider;
     private bool caught;
     private bool outside;
+    private GameFlowController gfc;
 
     [SerializeField] [Range(0.1f, 3f)] private float catchDelay = 0.25f;
     [SerializeField] [Range(0.3f, 30f)] private float pursueTime = 3f;
@@ -27,6 +28,7 @@ public class EnemyPatrolVisionCollider : MonoBehaviour
         caught = false;
         outside = true;
         slider.gameObject.SetActive(false);
+        gfc = GameObject.FindGameObjectWithTag("GameFlowController").GetComponent<GameFlowController>();
     }
 
     /*
@@ -41,7 +43,7 @@ public class EnemyPatrolVisionCollider : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D collision)
     {
-        if (collision.CompareTag("Player") && visibility.getPlayerVisible())
+        if (collision.CompareTag("Player") && visibility.getPlayerVisible() && !gfc.GetGameOver())
         {
             CheckForPlayer();
         }

@@ -12,6 +12,11 @@ public class GameFlowController : MonoBehaviour
     private static bool cursorInResume = true;
     private CanvasGroup resume;
     private CanvasGroup quit;
+    private Animator gameOverScreenAnimator;
+    private GameObject[] resetEnemiesPosition;
+    private EnemyPatrol enemyPatrol;
+    private PlayerPos resetPlayerPosition;
+    private PlayerMovement movement;
 
     private void Awake()
     {
@@ -22,6 +27,10 @@ public class GameFlowController : MonoBehaviour
     {
         resume = GameObject.FindGameObjectWithTag("Resume").GetComponent<CanvasGroup>();
         quit = GameObject.FindGameObjectWithTag("Quit").GetComponent<CanvasGroup>();
+        resetEnemiesPosition = GameObject.FindGameObjectsWithTag("Enemy");
+        gameOverScreenAnimator = GameObject.FindGameObjectWithTag("GameOverScreen").GetComponent<Animator>();
+        resetPlayerPosition = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerPos>();
+        movement= GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovement>();
     }
     // Update is called once per frame
     void Update()
@@ -54,9 +63,10 @@ public class GameFlowController : MonoBehaviour
             MoveCursor();
             CheckCursor();
         }
-        else if (PauseUnpressed() && gameover)
+        else if (PauseUnpressed() && gameover && PlayGameOver.getFinished())
         {
             gameover = false;
+            PlayGameOver.setFinished(false);
             paused = false;
             UnPauseGame();
             NotGameOver();
@@ -111,18 +121,42 @@ public class GameFlowController : MonoBehaviour
     public void GameOver()
     {
         gameover = true;
-        Time.timeScale = 0;
+        gameOverScreenAnimator.SetBool("gameOver", gameover);
+        //Time.timeScale = 0;
+        movement.setCanMove(false);
+        Invoke("ResetPlayer", 0.3f);
+        Invoke("ResetEnemies", 0.4f);
         InGameMenuController.Instance.SetGameOver();
-        AudioManager.PlaySound("game_over");
+        
     }
 
     public void NotGameOver()
     {
         gameover = false;
-        Time.timeScale = 1;
+        gameOverScreenAnimator.SetBool("gameOver", gameover);
+        //Time.timeScale = 1;
         InGameMenuController.Instance.SetNotGameOver();
+        
+        
+        movement.setCanMove(true);
     }
-
+    public bool GetGameOver()
+    {
+        return gameover;
+    }
+    void ResetPlayer()
+    {
+        resetPlayerPosition.GoToCheckPoint();
+    }
+    void ResetEnemies()
+    {
+        foreach (GameObject enemy in resetEnemiesPosition)
+        {
+            enemyPatrol = enemy.GetComponent<EnemyPatrol>();
+            enemyPatrol.SetPlayerDetected(false);
+            enemyPatrol.ResetPosition();
+        }
+    }
     /*public void RepeatLevel()
     {
         RestartGame();

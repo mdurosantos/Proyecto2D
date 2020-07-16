@@ -12,6 +12,7 @@ public class AudioManager : MonoBehaviour
     public static AudioClip haunt;
     public static AudioClip dehaunt;
     public static AudioClip game_over;
+    public static AudioClip pre_game_over;
     public static AudioClip moveUI;
     public static AudioClip okUI;
     static AudioSource audioSrc;
@@ -30,6 +31,7 @@ public class AudioManager : MonoBehaviour
         haunt = Resources.Load<AudioClip>("Audio/haunt");
         dehaunt = Resources.Load<AudioClip>("Audio/dehaunt");
         game_over = Resources.Load<AudioClip>("Audio/game_over");
+        pre_game_over = Resources.Load<AudioClip>("Audio/pre_game_over");
         moveUI = Resources.Load<AudioClip>("Audio/moveUI");
         okUI = Resources.Load<AudioClip>("Audio/okUI");
         audioSrc = GetComponent<AudioSource>();
@@ -41,34 +43,37 @@ public class AudioManager : MonoBehaviour
         switch (clip)
         {
             case "step":
-                audioSrc.PlayOneShot(step[Random.Range(0, 17)], 0.5f);
+                audioSrc.PlayOneShot(step[Random.Range(0, 17)], 0.6f);
                 break;
             case "key":
-                audioSrc.PlayOneShot(key, 0.2f);
+                audioSrc.PlayOneShot(key, 0.3f);
                 break;
             case "open_door":
-                audioSrc.PlayOneShot(open_door, 0.3f);
+                audioSrc.PlayOneShot(open_door, 0.4f);
                 break;
             case "open_closet":
-                audioSrc.PlayOneShot(open_closet, 0.3f);
+                audioSrc.PlayOneShot(open_closet, 0.4f);
                 break;
             case "player_detected":
-                audioSrc.PlayOneShot(player_detected, 0.8f);
+                audioSrc.PlayOneShot(player_detected, 0.9f);
                 break;
             case "haunt":
-                audioSrc.PlayOneShot(haunt, 0.8f);
+                audioSrc.PlayOneShot(haunt, 0.9f);
                 break;
             case "dehaunt":
-                audioSrc.PlayOneShot(dehaunt, 0.8f);
+                audioSrc.PlayOneShot(dehaunt, 0.9f);
                 break;
             case "game_over":
-                audioSrc.PlayOneShot(game_over, 0.8f);
+                audioSrc.PlayOneShot(game_over, 0.9f);
+                break;
+            case "pre_game_over":
+                audioSrc.PlayOneShot(pre_game_over, 0.7f);
                 break;
             case "moveUI":
-                audioSrc.PlayOneShot(moveUI, 0.5f);
+                audioSrc.PlayOneShot(moveUI, 0.6f);
                 break;
             case "okUI":
-                audioSrc.PlayOneShot(okUI, 0.5f);
+                audioSrc.PlayOneShot(okUI, 0.6f);
                 break;
         }
     }

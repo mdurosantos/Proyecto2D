@@ -12,6 +12,7 @@ public abstract class Interactuable : MonoBehaviour
     private bool playerInRange;
     private bool used;
     private Text feedback;
+    private GameFlowController gameFlowController;
 
     void Start()
     {
@@ -19,11 +20,12 @@ public abstract class Interactuable : MonoBehaviour
         used = false;
         Init();
         feedback = GameObject.FindGameObjectWithTag("Feedback").GetComponent<Text>();
+        gameFlowController = GameObject.FindGameObjectWithTag("GameFlowController").GetComponent<GameFlowController>();
     }
     
     void Update()
     {
-        if (playerInRange && Input.GetButtonDown("Interact"))
+        if (playerInRange && Input.GetButtonDown("Interact") && !gameFlowController.GetGameOver())
         {
             if (!oneUse || !used)
             {
@@ -41,6 +43,10 @@ public abstract class Interactuable : MonoBehaviour
                 }
             }
             else Debug.Log("This one-use item has already been used.");
+        }
+        else if (gameFlowController.GetGameOver())
+        {
+            feedback.text = "";
         }
     }
     
